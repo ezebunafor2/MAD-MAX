@@ -1,14 +1,14 @@
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?font=Orbitron&size=35&duration=4000&color=00FF00&center=true&vCenter=true&width=600&height=70&lines=🤖+404+TECH+WHATSAPP+BOT+🚀;✨+ADVANCED+AI+POWERED+✨;🔥+MULTI-FUNCTIONAL+FEATURES+🔥" alt="CYBERDARK TECH WhatsApp Bot">
+  <img src="https://readme-typing-svg.herokuapp.com/?font=Orbitron&size=35&duration=4000&color=00FF00&center=true&vCenter=true&width=600&height=70&lines=🤖+CYBERDARK+WHATSAPP+BOT+🚀;✨+ADVANCED+AI+POWERED+✨;🔥+MULTI-FUNCTIONAL+FEATURES+🔥" alt="CYBERDARK TECH WhatsApp Bot">
 </p>
 
 <div align="center">
 
 <!-- Bot Showcase Image -->
-<img src="https://files.catbox.moe/dgx6oa.png" alt="cyberdark WhatsApp Bot Interface" width="600" style="border-radius: 10px; box-shadow: 0 10px 30px rgba(0,255,0,0.3); margin: 20px 0;" />
+<img src="https://files.catbox.moe/dgx6oa.png" alt="CYBERDARK WhatsApp Bot Interface" width="500" style="border-radius: 10px; box-shadow: 0 10px 30px rgba(0,255,0,0.3); margin: 20px 0;" />
 
 <!-- Animated Banner -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=00ff00&height=200&section=header&text=404+TECH&fontSize=50&fontColor=000000&animation=fadeIn&fontAlign=50&fontAlignY=40" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=00ff00&height=200&section=header&text=CYBERDARK+AI+BOT&fontSize=50&fontColor=000000&animation=fadeIn&fontAlign=50&fontAlignY=40" />
 
 <!-- DIRECT HEROKU DEPLOY BUTTON -->
 <div align="center" style="margin: 30px 0;">
