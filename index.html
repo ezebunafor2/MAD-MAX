@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAD-MAX | WHATSAPP BOT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #000000, #1a1a2e);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .glow {
+            font-size: 2.5em;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+            animation: pulse 2s infinite;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
+            50% { opacity: 0.8; text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000; }
+            100% { opacity: 1; text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
+        }
+        
+        .status {
+            background: rgba(255, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4CAF50;
+            animation: blink 2s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #ff0000;
+        }
+        
+        .info-label {
+            font-size: 0.9em;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        
+        .current-time {
+            font-size: 1.1em;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .developer {
+            color: #888;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+        
+        .links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .link-btn {
+            background: rgba(255, 0, 0, 0.3);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .link-btn:hover {
+            background: rgba(255, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="glow">MAD-MAX WHATSAPP BOT</div>
+        
+        <div class="status">
+            <div class="status-dot"></div>
+            <span id="botStatus">Bot is running...</span>
+        </div>
+        
+        <div class="current-time" id="currentTime">
+            Loading time...
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-label">Status</div>
+                <div class="info-value" id="statusValue">Online</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Uptime</div>
+                <div class="info-value" id="uptimeValue">00:00:00</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Prefix</div>
+                <div class="info-value">${config.PREFIX || '.'}</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Memory</div>
+                <div class="info-value" id="memoryValue">-- MB</div>
+            </div>
+        </div>
+        
+        <div class="links">
+            <a href="/ping" class="link-btn" target="_blank">Health Check</a>
+            <button onclick="showQR()" class="link-btn">Show QR Code</button>
+        </div>
+        
+        <div class="developer">
+            Developed by Mad Max Team • Bot Version 1.0
+        </div>
+    </div>
+    
+    <script>
+        let startTime = Date.now();
+        
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', {
+                hour12: true,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            const dateStr = now.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            document.getElementById('currentTime').innerHTML = 
+                `🕒 ${timeStr}<br>📅 ${dateStr}`;
+            
+            // Update uptime
+            const uptime = Date.now() - startTime;
+            const hours = Math.floor(uptime / 3600000);
+            const minutes = Math.floor((uptime % 3600000) / 60000);
+            const seconds = Math.floor((uptime % 60000) / 1000);
+            
+            document.getElementById('uptimeValue').textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Update memory if available
+            if (performance && performance.memory) {
+                const memoryMB = (performance.memory.usedJSHeapSize / 1024 / 1024).toFixed(1);
+                document.getElementById('memoryValue').textContent = `${memoryMB} MB`;
+            }
+        }
+        
+        function showQR() {
+            alert('QR code is displayed in the bot console if needed for login.');
+        }
+        
+        // Check bot status every 10 seconds
+        function checkBotStatus() {
+            fetch('/ping')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'alive') {
+                        document.getElementById('statusValue').textContent = 'Online';
+                        document.getElementById('statusValue').style.color = '#4CAF50';
+                    }
+                })
+                .catch(() => {
+                    document.getElementById('statusValue').textContent = 'Checking...';
+                    document.getElementById('statusValue').style.color = '#FF9800';
+                });
+        }
+        
+        // Initialize
+        updateTime();
+        setInterval(updateTime, 1000);
+        checkBotStatus();
+        setInterval(checkBotStatus, 10000);
+    </script>
+</body>
+</html>

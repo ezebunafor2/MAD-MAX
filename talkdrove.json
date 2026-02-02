@@ -1,0 +1,31 @@
+
+{
+"bot-name": "MAD-MAX",
+  "description": "ᴊᴀᴠᴀsᴄʀɪᴘᴛ ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ 404unkown ➋➊➑",
+  "logo": "https://files.catbox.moe/lgj3y5.jpeg",
+  "keywords": ["bot"],
+  "documentation-link": "https://pair-1-3xsl.onrender.com/",
+    "owner-verification":"emmanuelmatianyi@gmail.com@gmail.com",
+  
+    "env": {
+      "SESSION_ID": {
+        "description": "Put your SESSION_ID here. It starts with MAD-MAX~",
+        "value":"",
+        "required": true
+        
+      },
+      
+    "OWNER_NUMBER": {
+      "description": "Enter owner number",
+      "required": true,
+      "value": "254769769295"
+      
+       },
+      "TIMEZONE": {
+      "description": "Enter country timezone",
+      "required": true,
+      "value": "Africa/Nairobi"
+
+    }  
+  }
+}
