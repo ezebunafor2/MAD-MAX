@@ -1,15 +1,14 @@
 services:
-  - type: web
+  - type: worker
     name: mad-max-whatsapp-bot
     env: node
     region: oregon
     plan: free
     buildCommand: npm install
     startCommand: npm start
-    healthCheckPath: /ping
     autoDeploy: true
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
-      - key: PORT
-        value: 10000
+      - key: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
+        value: "true"
