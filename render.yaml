@@ -1,0 +1,22 @@
+# render.yaml
+services:
+  - type: web
+    name: mad-max-whatsapp-bot
+    env: node
+    region: oregon  # or singapore, frankfurt, ohio
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /ping
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production
+    disk:
+      name: sessions
+      mountPath: /tmp/sessions
+      sizeGB: 1
